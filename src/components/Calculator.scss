@@ -1,0 +1,115 @@
+@import "../styles/variables";
+
+// base styles 
+body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: $bg-color;
+}
+
+h2 {
+    font-size: 0.8em;
+    text-align: center;
+}
+
+hr {
+    border-top: 3px solid $calculator-color;
+    margin-top: 40px;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+// calculator styles
+.display-primary,
+.display-secondary {
+    display: block;
+    font-size: 1em;
+    padding: 0 5px 0 5px;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+.display-secondary {
+    font-size: 0.4em;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.calculator {
+    background-color: #D9D9CD;
+    border-radius: 10px;
+    box-shadow: 3px 3px 15px black, 1px 1px 3px white inset;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 300px;
+    height: 410px;
+}
+
+.screen {
+    background-color: $screen-color;
+    font-size: 2em;
+    height: 55px;
+    width: 90%;
+    display: block;
+    border-width: 8px 12px 8px 12px;
+    border-color: #828284;
+    border-style: solid;
+    border-radius: 2px;
+    margin: 0 auto;
+    padding-right: 5px;
+    position: relative;
+    text-align: right;
+}
+
+.keypad {
+    margin: 0 auto;
+    margin-top: 10px;
+    height: 200px;
+    width: 280px;
+}
+
+// button styles
+.keypad-btn {
+    background-color: $op-btn-color;
+    color: $btn-text;
+    box-shadow: 1px 2px 1px;
+    margin: 3px;
+    font-size: 1em;
+    height: $btn-height;
+    width: $btn-width;
+    float: left;
+    cursor: pointer; 
+    cursor: hand; 
+    &:hover {
+        border: 1px solid $btn-hover-outline-color;
+    }
+}
+
+a.keypad-btn {
+  
+}
+
+.number-btn {
+    background-color: $num-btn-color;
+    color: $btn-text;
+}
+
+.clear-btn {
+    background-color: $clear-btn-color;
+}
+
+.plus-btn {
+    float: right;
+    
+    height: 86px;
+}
+
+@import "../styles/media-queries";
+
