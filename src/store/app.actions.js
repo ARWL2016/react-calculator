@@ -39,6 +39,12 @@ export const handlePosNegInput = () => {
     }
 }
 
+export const handlePercentInput = () => {
+    return {
+        type: types.Handle_Percent_Input
+    }
+}
+
 export const updateDisplay = () => {
     return {
         type: types.Update_Display
@@ -72,6 +78,12 @@ export const memoryPlus = () => {
 export const memoryMinus = () => {
     return {
         type: types.Memory_Minus
+    }
+}
+
+export const memoryRecall = () => {
+    return {
+        type: types.Memory_Recall
     }
 }
 

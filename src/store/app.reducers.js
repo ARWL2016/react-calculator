@@ -21,8 +21,7 @@ const input = (state, action) => {
 
 const removeExtraZeroes = (state) => {
   if (state.input[0] === "0" && state.input[1] !== ".") {
-    const newInput = state.input.slice();
-    newInput.pop();
+    const newInput = state.input.slice(0, -1);
     return Object.assign({}, state, {
       input: newInput,
     });
@@ -32,10 +31,9 @@ const removeExtraZeroes = (state) => {
 };
 
 const removeExtraOps = (state) => {
-  const pattern = /\+|\-|\*|\//;
+  const pattern = /\+|-|\*|\//;
   if (isNaN(last(state.input)) && pattern.test(last(state.input))) {
-    const newInput = state.input.slice();
-    newInput.pop();
+    const newInput = state.input.slice(0, -1);
 
     return Object.assign({}, state, { input: newInput });
   } else {
@@ -97,6 +95,17 @@ const handlePosNegInput = (state) => {
 
   return Object.assign({}, state, { input: newInput });
 };
+
+const handlePercentInput = (state) => {
+  const newInput = state.input.slice();
+  if (state.input.length !== 0) {
+    newInput.push("/", 100);
+
+    return Object.assign({}, state, { input: newInput })
+  } else {
+    return state;
+  }
+}
 
 const updateDisplay = (state) => {
   const newDisplay = state.input.length === 0 ? "0" : state.input.join("");
@@ -162,6 +171,19 @@ const memoryMinus = (state) => {
   return memoryUpdate(state, false);
 }
 
+const memoryRecall = (state) => {
+  const newInput = state.input.slice();
+  const lastInput = last(state.input);
+
+  if (isNaN(lastInput) && lastInput !== '.') {
+    newInput.push(state.memoryTotal.toString());
+
+    return Object.assign({}, state, { input: newInput });
+  } else {
+    return state;
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case types.Input:
@@ -182,6 +204,9 @@ const reducer = (state = initialState, action) => {
     case types.Handle_Pos_Neg_Input:
       return handlePosNegInput(state);
 
+    case types.Handle_Percent_Input: 
+      return handlePercentInput(state);
+
     case types.Update_Display:
       return updateDisplay(state);
 
@@ -199,6 +224,9 @@ const reducer = (state = initialState, action) => {
 
     case types.Memory_Minus: 
       return memoryMinus(state);
+
+    case types.Memory_Recall: 
+      return memoryRecall(state);
 
     default:
       return state;

@@ -1,34 +1,33 @@
 @media (max-width: 340px) {
+  body {
+    font-size: 0.9em;
+  }
+  .calculator {
+    margin-top: 10px;
+    width: 240px;
+    height: 350px;
+  }
 
-    body {
-      font-size: 0.9em;
-    }
-    .calculator {
-      margin-top: 10px;
-      width: 240px;
-      height: 350px;
-    }
-  
-    .screen {
-      width: 200px;
-    }
-  
-    hr {
-      margin-top: 30px;
-      width: 220px;
-    }
-  
-    .keypad {
-      width: 220px;
-    }
-  
-    .keypad-btn {
-      margin: 2px;
-      width: 40px;
-      height: 32px;
-    }
-  
-    .plus-btn {
-      height: 68px;
+  .screen {
+    width: 200px;
   }
+
+  hr {
+    margin-top: 30px;
+    width: 220px;
   }
+
+  .keypad {
+    width: 220px;
+  }
+
+  button {
+    margin: 2px;
+    width: 40px;
+    height: 32px;
+  }
+
+  .plus-btn {
+    height: 68px;
+  }
+}

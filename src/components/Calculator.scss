@@ -30,8 +30,10 @@ li {
     display: block;
     font-size: 1em;
     padding: 0 5px 0 5px;
-    word-wrap: break-word;
+    // word-wrap: break-word;
+    overflow: hidden;
     margin: 0;
+    float: right;
 }
 
 .display-secondary {
@@ -66,6 +68,7 @@ li {
     padding-right: 5px;
     position: relative;
     text-align: right;
+    overflow: hidden;
 }
 
 .keypad {
@@ -76,7 +79,7 @@ li {
 }
 
 // button styles
-.keypad-btn {
+button {
     background-color: $op-btn-color;
     color: $btn-text;
     box-shadow: 1px 2px 1px;
@@ -90,10 +93,6 @@ li {
     &:hover {
         border: 1px solid $btn-hover-outline-color;
     }
-}
-
-a.keypad-btn {
-  
 }
 
 .number-btn {
