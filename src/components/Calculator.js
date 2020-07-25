@@ -2,7 +2,7 @@ import React from 'react';
 import "./Calculator.scss"
 
 const calculator = (props) => {
-    const { display, handleClick } = props;
+    const { display, subDisplay, handleClick } = props;
     // console.log(props)
     return (
         
@@ -13,7 +13,7 @@ const calculator = (props) => {
                   {display}
                 </p>
                 <p id="subDisplay" className="display-secondary">
-                  Ans
+                  {subDisplay}
                 </p>
               </div>
               <hr></hr>
