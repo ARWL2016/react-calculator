@@ -4,22 +4,16 @@ import "./Calculator.scss";
 const calculator = (props) => {
   const { display, subDisplay, handleClick } = props;
   return (
-    <div id="main" className="calculator">
+    <div className="calculator">
       <h2>WILLIS JS500i ELECTRONIC</h2>
-      <div id="screen" className="screen">
-        <p id="display" className="display-primary">
-          {display}
-        </p>
+      <div className="screen">
+        <p className="display-primary">{display}</p>
         <p id="subDisplay" className="display-secondary">
           {subDisplay}
         </p>
       </div>
       <hr></hr>
-      <div
-        id="keypad"
-        className="keypad"
-        onClick={(e) => handleClick(e.target)}
-      >
+      <div className="keypad" onClick={(e) => handleClick(e.target)}>
         <button>MR</button>
         <button>M+</button>
         <button>M-</button>

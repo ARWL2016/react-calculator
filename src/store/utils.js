@@ -4,3 +4,9 @@ export const last = (arr) => {
     }
 
 }
+
+export const updateInput = (state, newInput) => {
+    return Object.assign({}, state, {
+      input: newInput
+    })
+  }

@@ -1,5 +1,5 @@
 import * as types from "./actionTypes";
-import { last } from "./utils";
+import { last, updateInput } from "./utils";
 
 const initialState = {
   input: [],
@@ -11,20 +11,16 @@ const initialState = {
 const MAX_RESULT = 999999999999;
 
 const input = (state, action) => {
-  const newInput = state.input.slice();
-  newInput.push(action.payload);
+  const newInput = [...state.input.slice(), action.payload];
 
-  return Object.assign({}, state, {
-    input: newInput,
-  });
+  return updateInput(state, newInput);
 };
 
 const removeExtraZeroes = (state) => {
   if (state.input[0] === "0" && state.input[1] !== ".") {
     const newInput = state.input.slice(0, -1);
-    return Object.assign({}, state, {
-      input: newInput,
-    });
+
+    return updateInput(state, newInput);
   } else {
     return state;
   }
@@ -35,7 +31,7 @@ const removeExtraOps = (state) => {
   if (isNaN(last(state.input)) && pattern.test(last(state.input))) {
     const newInput = state.input.slice(0, -1);
 
-    return Object.assign({}, state, { input: newInput });
+    return updateInput(state, newInput);
   } else {
     return state;
   }
@@ -47,7 +43,8 @@ const removeInitialOps = (state) => {
     const newInput = state.input.slice();
     newInput.shift();
 
-    return Object.assign({}, state, { input: newInput });
+    return updateInput(state, newInput);
+    
   } else {
     return state;
   }
@@ -74,7 +71,7 @@ const handleDecimalInput = (state) => {
     }
     newInput.push(".");
 
-    return Object.assign({}, state, { input: newInput });
+    return updateInput(state, newInput);
   } else {
     return state;
   }
@@ -93,7 +90,7 @@ const handlePosNegInput = (state) => {
     newInput.unshift("-");
   }
 
-  return Object.assign({}, state, { input: newInput });
+  return updateInput(state, newInput);
 };
 
 const handlePercentInput = (state) => {
@@ -101,7 +98,7 @@ const handlePercentInput = (state) => {
   if (state.input.length !== 0) {
     newInput.push("/", 100);
 
-    return Object.assign({}, state, { input: newInput })
+    return updateInput(state, newInput);
   } else {
     return state;
   }
@@ -140,10 +137,7 @@ const allClear = (state) => {
 
 const clear = (state) => {
   const newInput = state.input.slice(0, -1);
-  return Object.assign({}, state, {
-    input: newInput
-  })
-  
+  return updateInput(state, newInput);
 };
 
 const memoryUpdate = (state, isAdd) => {
@@ -178,7 +172,7 @@ const memoryRecall = (state) => {
   if (isNaN(lastInput) && lastInput !== '.') {
     newInput.push(state.memoryTotal.toString());
 
-    return Object.assign({}, state, { input: newInput });
+    return updateInput(state, newInput);
   } else {
     return state;
   }
